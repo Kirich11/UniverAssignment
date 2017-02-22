@@ -15,11 +15,11 @@ void product::getInfo() {
     f.open("text.txt");
     while(!f.eof()) {
         getline(f, product);
-        
+
     }
     f.close();
     cout<< product << endl;
-    //return product;
+    return product;
 }
 /*
 //display our info on srceen
