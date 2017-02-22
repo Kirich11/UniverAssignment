@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 enum days {Mon,Tue,Wed,Thu,Fri,Sat,Sun};

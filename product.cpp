@@ -10,15 +10,18 @@ product::product(days day, int supplied, int sold, string name)
 
 //read info from file and form our product
 void product::getInfo() {
+    vector<string> container;
     ifstream f;
-    string product;
     f.open("text.txt");
     while(!f.eof()) {
+        string product;
         getline(f, product);
-
+        container.insert(container.end(),product);
     }
     f.close();
-    cout<< product << endl;
+    for (int i=0; i<container.size(); i++) {
+    cout<< container[i] << endl;
+    }
     return product;
 }
 /*
