@@ -1,38 +1,123 @@
 #include "product.h"
 
-product::product(days day, int supplied, int sold, string name)
+product::product(string day, int supplied, int sold, string name)
     {
-        day = day;
-        supplied = supplied;
-        sold = sold;
-        name = name;
+        this->day = day;
+        this->supplied = supplied;
+        this->sold = sold;
+        this->name = name;
     }
 
+int product::getSold() {
+    return this->sold;
+}
+
+int product::getSuppl() {
+    return this->supplied;
+}
+
+string product::getName() {
+    return this->name;
+}
+
+string product::getDay() {
+    return this->day;
+}
+
 //read info from file and form our product
-void product::getInfo() {
-    vector<string> container;
+vector<product> product::getInfo() {
+    vector<product> container;
+    string headers[1];
     ifstream f;
     f.open("text.txt");
+    int i = 0;
     while(!f.eof()) {
-        string product;
-        getline(f, product);
-        container.insert(container.end(),product);
+        if(i!=0) {
+            cout<< i<< endl;
+            string productS;
+            product prod;
+            getline(f, productS);
+            productS.erase(remove(productS.begin(), productS.end(), '\t'), productS.end()); // remove tabs
+            productS.erase(remove(productS.begin(), productS.end(), ' '), productS.end()); // remove whitespaces
+            size_t pos = 0;
+            string token;
+            string delimiter = ";";
+            int j = 0;
+            while ((pos = productS.find(delimiter)) != string::npos) {
+                token = productS.substr(0, pos);
+                productS.erase(0, pos + delimiter.length());
+                switch (j) {
+                    case 0: {
+                        for (string::size_type k=0; k<token.length(); ++k){
+                            token[k] =  std::tolower(token[k], std::locale(""));
+                        }
+                        prod.name = token;
+                        break;
+                        }
+                    case 1: {
+                        locale loc;
+                        for (string::size_type k=0; k<token.length(); ++k){
+                            token[k] = tolower(token[k]);
+                        }
+                        prod.day = token;
+                        break;
+                        }
+                    case 2 : {
+                        prod.supplied = atoi(token.c_str());
+                        break;
+                        }
+                    }
+                    j++;
+                }
+            prod.sold = atoi(productS.c_str());
+            container.insert(container.end(),prod);
+        } else {
+            string header;
+            getline(f, header);
+            header.erase(remove(header.begin(), header.end(), '\t'), header.end()); // remove tabs
+            header.erase(remove(header.begin(), header.end(), ' '), header.end()); // remove whitespaces
+            headers[0] = header;
+            cout<<"наши поля: "<< headers[0] << endl;
+        }
+        i++;
     }
     f.close();
-    for (int i=0; i<container.size(); i++) {
-    cout<< container[i] << endl;
-    }
-    return product;
+    return container;
 }
-/*
+
+
 //display our info on srceen
-void displayInfo() {
+void product::displayInfo(vector<product> arr) {
+    cout << "Товар || " << "День недели || " << "Поступление || " << "Продажа ||" << endl;
+    for(int i =0; i<arr.size(); i++) {
+        string name = arr[i].getName();
+        string day = arr[i].getDay();
+        int suppl = arr[i].getSuppl();
+        int sold = arr[i].getSold();
+        cout << name << " || " << day << " || " << suppl << " || " << sold <<  " ||" << endl;
+    }
 }
 
 //count all products sold on one day
-void doMagic() {
+vector<product> product::doMagic(vector<product> arr) {
+    vector<product> result;
+    string a;
+    int sum =0;
+    do {
+        cout<< "Выберите день продажи (Понедельник,Вторник,Среда,Четверг,Пятница,Суббота,Воскресенье): "<<endl;
+        cin>> a;
+        cout<<"Вы ввели "<<a << endl;
+    } while (!(a!="Понедельник"||a!="Вторник"||a!="Среда"||a!="Четверг"||a!="Пятница"|| a!="Субботу" || a!="Воскресенье"));
+    for (int i=0; i< arr.size(); i++) {
+        string day = arr[i].getDay();
+        int sold = arr[i].getSold();
+        if (day == a && sold != 0) {
+            result.insert(result.end(),arr[i]);
+        }
+    }
+    return result;
 }
-
+/*
 //write our result in a file
 void writeInfoToFile() {
 }

@@ -1,11 +1,18 @@
 #include "product.h"
-#include <stdio.h>
 
 int main() {
+    setlocale(LC_ALL, "");
     product prod;
-    cout <<"Hello World!"<< endl;
-    string str;
-    str = prod.getInfo();
-    cout << str << endl;
+    cout <<"Го пошаманим"<< endl;
+
+    vector<product> arr;
+    arr = prod.getInfo();
+    cout<<"Данные из файла: "<<endl;
+    prod.displayInfo(arr);
+
+    vector<product> oneDay;
+    oneDay = prod.doMagic(arr);
+    prod.displayInfo(oneDay);
+    //delete &arr;
     return 0;
 }
