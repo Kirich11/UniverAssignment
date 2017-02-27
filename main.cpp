@@ -13,6 +13,5 @@ int main() {
     vector<product> oneDay;
     oneDay = prod.doMagic(arr);
     prod.displayInfo(oneDay);
-    //delete &arr;
     return 0;
 }
