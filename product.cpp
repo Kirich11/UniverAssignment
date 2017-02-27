@@ -48,17 +48,16 @@ vector<product> product::getInfo() {
                 productS.erase(0, pos + delimiter.length());
                 switch (j) {
                     case 0: {
-                        for (string::size_type k=0; k<token.length(); ++k){
+                        /*for (string::size_type k=0; k<token.length(); ++k){
                             token[k] =  std::tolower(token[k], std::locale(""));
-                        }
+                        }*/
                         prod.name = token;
                         break;
                         }
                     case 1: {
-                        locale loc;
-                        for (string::size_type k=0; k<token.length(); ++k){
+                        /*for (string::size_type k=0; k<token.length(); ++k){
                             token[k] = tolower(token[k]);
-                        }
+                        }*/
                         prod.day = token;
                         break;
                         }
