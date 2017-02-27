@@ -1,5 +1,4 @@
 # UniverAssignment
-Just compile with g++:
+Just compile with g++ and run ./a.out
  > $ g++ main.cpp product.cpp
-and run ./a.out
  > $ ./a.out
