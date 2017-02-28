@@ -7,12 +7,16 @@ int main() {
 
     vector<product> arr;
     //arr.reserve(0);
-    char* filename;
+    const char* filename = new char[10000];
+    string f;
+    //char* fi;
     cout <<"Введите путь к файлу: " << endl;
     do {
         cout<<"here"<<endl;
-        cin>> filename;
-        cout<< "Вы ввели: " << filename << endl;
+        cin>> f;
+        filename = f.c_str();
+        //cin>> fi;
+        //cout<< "Вы ввели: " << filename << endl;
         arr = prod.getInfo(filename);
         cout<< "arr size: "<<arr.size()<<endl;
         if (arr.size()==0) {
@@ -27,9 +31,10 @@ int main() {
     prod.displayInfo(oneDay);
 
     cout<<"Введити путь к новому файлу:" << endl;
-    char* filename2;
-    //cin>> filename2;
-    //prod.writeInfoToFile(filename, oneDay);
-    //delete filename;
+    const char* filename2 = new char[10000];
+    string f2;
+    cin>> f2;
+    filename2 = f2.c_str();
+    prod.writeInfoToFile(filename2, oneDay);
     return 0;
 }
