@@ -25,6 +25,7 @@ string product::getDay() {
 }
 
 //read info from file and form our product
+//TODO all strings to lowercase
 vector<product> product::getInfo(const char* filename) {
     vector<product> container;
     string headers[1];
@@ -87,7 +88,7 @@ vector<product> product::getInfo(const char* filename) {
 
 //display our info on srceen
 void product::displayInfo(vector<product> arr) {
-    cout << "Товар || " << "День недели || " << "Поступление || " << "Продажа ||" << endl;
+    cout <<""<<endl<< "Товар || " << "День недели || " << "Поступление || " << "Продажа ||" << endl;
     for(int i =0; i<arr.size(); i++) {
         string name = arr[i].getName();
         string day = arr[i].getDay();

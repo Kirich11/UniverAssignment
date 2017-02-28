@@ -4,12 +4,13 @@ int main() {
     setlocale(LC_ALL, "");
     product prod;
     cout <<"Го пошаманим"<< endl << endl;
-
+    /*Start of our programm
+        Allocate pointer for filename & string for it
+        Wait for the filename to be correct
+        */
     vector<product> arr;
-    //arr.reserve(0);
     const char* filename = new char[10000];
     string f;
-    //char* fi;
     cout <<"Введите путь к файлу: " << endl;
     do {
         cout<<"here"<<endl;
@@ -23,13 +24,17 @@ int main() {
             cout<< "Неверное имя файла или файл пустой"<<endl << "Введите путь к файлу снова:"<< endl;
         }
     } while (arr.size() ==0);
-    cout<<"Данные из файла: "<< endl << endl;
-    prod.displayInfo(arr);
+    cout<<"Данные из файла: "<< endl;
+    prod.displayInfo(arr); //display info that we got from the file
+    cout<<""<<endl;
 
+    /*Do the assignment: find all products sold on one day*/
     vector<product> oneDay;
     oneDay = prod.doMagic(arr);
-    prod.displayInfo(oneDay);
+    prod.displayInfo(oneDay); //display our results
+    cout<<""<<endl;
 
+    /*Write our result to a new file*/
     cout<<"Введити путь к новому файлу:" << endl;
     const char* filename2 = new char[10000];
     string f2;
