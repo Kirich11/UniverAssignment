@@ -25,15 +25,15 @@ string product::getDay() {
 }
 
 //read info from file and form our product
-vector<product> product::getInfo() {
+vector<product> product::getInfo(const char* filename) {
     vector<product> container;
     string headers[1];
     ifstream f;
-    f.open("text.txt");
+    f.open(filename);
     int i = 0;
-    while(!f.eof()) {
+    while(!f.eof() && f.good()) {
         if(i!=0) {
-            cout<< i<< endl;
+            //cout<< i<< endl;
             string productS;
             product prod;
             getline(f, productS);
@@ -116,8 +116,12 @@ vector<product> product::doMagic(vector<product> arr) {
     }
     return result;
 }
-/*
-//write our result in a file
-void writeInfoToFile() {
+
+void product::writeInfoToFile(const char* filename, vector<product> arr) {
+    ofstream f;
+    f.open(filename);
+    for (int i=0; i<arr.size(); i++){
+        f <<"Название товара:"<< arr[i].getName() <<" День недели:"<< arr[i].getDay() <<" Кол-во поступлений:"<< arr[i].getSuppl() <<" Кол-во продаж:"<< arr[i].getSold() << "\n";
+    }
+    f.close();
 }
-*/
