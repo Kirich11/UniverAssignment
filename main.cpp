@@ -13,11 +13,8 @@ int main() {
     string f;
     cout <<"Введите путь к файлу: " << endl;
     do {
-        cout<<"here"<<endl;
         cin>> f;
         filename = f.c_str();
-        //cin>> fi;
-        //cout<< "Вы ввели: " << filename << endl;
         arr = prod.getInfo(filename);
         cout<< "arr size: "<<arr.size()<<endl;
         if (arr.size()==0) {
