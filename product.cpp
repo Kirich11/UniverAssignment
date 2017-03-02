@@ -102,12 +102,14 @@ void product::displayInfo(vector<product> arr) {
 vector<product> product::doMagic(vector<product> arr) {
     vector<product> result;
     string a;
+    cout<< "Введите день продажи (Понедельник,Вторник,Среда,Четверг,Пятница,Суббота,Воскресенье): "<<endl;
     int sum =0;
     do {
-        cout<< "Выберите день продажи (Понедельник,Вторник,Среда,Четверг,Пятница,Суббота,Воскресенье): "<<endl;
         cin>> a;
-        cout<<"Вы ввели "<<a << endl;
-    } while (a!="Понедельник"&&a!="Вторник"&&a!="Среда"&&a!="Четверг"&&a!="Пятница"&& a!="Субботу" && a!="Воскресенье");
+        if (a!="Понедельник"&&a!="Вторник"&&a!="Среда"&&a!="Четверг"&&a!="Пятница"&& a!="Суббота" && a!="Воскресенье") {
+            cout<< "Введите день продажи корректно(Понедельник,Вторник,Среда,Четверг,Пятница,Суббота,Воскресенье): "<<endl;
+        }
+    } while (a!="Понедельник"&&a!="Вторник"&&a!="Среда"&&a!="Четверг"&&a!="Пятница"&& a!="Суббота" && a!="Воскресенье");
     for (int i=0; i< arr.size(); i++) {
         string day = arr[i].getDay();
         int sold = arr[i].getSold();
@@ -121,6 +123,7 @@ vector<product> product::doMagic(vector<product> arr) {
 void product::writeInfoToFile(const char* filename, vector<product> arr) {
     ofstream f;
     f.open(filename);
+
     for (int i=0; i<arr.size(); i++){
         f <<"Название товара:"<< arr[i].getName() <<" День недели:"<< arr[i].getDay() <<" Кол-во поступлений:"<< arr[i].getSuppl() <<" Кол-во продаж:"<< arr[i].getSold() << "\n";
     }

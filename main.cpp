@@ -16,7 +16,6 @@ int main() {
         cin>> f;
         filename = f.c_str();
         arr = prod.getInfo(filename);
-        cout<< "arr size: "<<arr.size()<<endl;
         if (arr.size()==0) {
             cout<< "Неверное имя файла или файл пустой"<<endl << "Введите путь к файлу снова:"<< endl;
         }
