@@ -121,8 +121,8 @@ vector<product> product::doMagic(vector<product> arr) {
 }
 
 void product::writeInfoToFile(const char* filename, vector<product> arr) {
-    ofstream f;
-    f.open(filename);
+    fstream f;
+    f.open(filename, fstream::out);
 
     for (int i=0; i<arr.size(); i++){
         f <<"Название товара:"<< arr[i].getName() <<" День недели:"<< arr[i].getDay() <<" Кол-во поступлений:"<< arr[i].getSuppl() <<" Кол-во продаж:"<< arr[i].getSold() << "\n";

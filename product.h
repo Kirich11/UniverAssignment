@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <iterator>
 #include <algorithm>
 #include <wchar.h>
 #include <stdio.h>
